@@ -8,6 +8,19 @@ namespace CSException32
 {
     internal class Program
     {
+        class BoxWrongWidthException : Exception
+        {
+            public BoxWrongWidthException(string message) : base(message)
+            {
+            }
+        }
+
+        class BoxWrongHeightException : Exception
+        {
+            public BoxWrongHeightException(string message) : base(message)
+            {
+            }
+        }
 
         class Box
         {
@@ -18,7 +31,7 @@ namespace CSException32
                 set
                 {
                     if (value < 0)
-                        throw new Exception("너비는 0보다 큰 수가 되어야 합니다.");
+                        throw new BoxWrongWidthException("너비는 0보다 큰 수가 되어야 합니다.");
                     width = value;
                 }
             }
@@ -30,7 +43,7 @@ namespace CSException32
                 set
                 {
                     if (value < 0)
-                        throw new Exception("높이는 0보다 큰 수가 되어야 합니다.");
+                        throw new BoxWrongHeightException("높이는 0보다 큰 수가 되어야 합니다.");
                     height = value;
                 }
             }
@@ -59,9 +72,17 @@ namespace CSException32
                 wrongBox.Width = -10;
                 //wrongBox.Height = -10;
             }
-            catch (Exception ex)
+            catch (BoxWrongWidthException e)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("너비 값 제대로 안넣을래?");
+            }
+            catch (BoxWrongHeightException e)
+            {
+                Console.WriteLine("높이 값 제대로 안넣을래?");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("알 수 없는 에러?");
             }
                 
         }
