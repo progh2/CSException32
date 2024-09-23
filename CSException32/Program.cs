@@ -84,6 +84,10 @@ namespace CSException32
             {
                 Console.WriteLine("알 수 없는 에러?");
             }
+            finally
+            {
+                Console.WriteLine("프로그램 종료");
+            }
                 
         }
     }
